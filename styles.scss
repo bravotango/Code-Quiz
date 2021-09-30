@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Gidugu&display=swap");
+
+body {
+  font-family: "Gidugu", sans-serif;
+  font-size: 22px;
+  text-align: center;
+  .container {
+    width: 600px;
+    margin: 0 auto;
+    button {
+      font-family: "Gidugu", sans-serif;
+      min-width: 75px;
+      font-size: 100%;
+    }
+  }
+}
