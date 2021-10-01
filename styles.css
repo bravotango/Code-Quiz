@@ -8,18 +8,66 @@
 
 body {
   font-family: "Gidugu", sans-serif;
-  font-size: 22px;
+  font-size: 28px;
   text-align: center;
 }
 
 body .container {
-  width: 600px;
+  width: 400px;
   margin: 0 auto;
+}
+
+body .container div#quiz {
+  display: none;
+}
+
+body .container div#quiz ol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 50px;
+}
+
+body .container div#quiz ol li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  line-height: 2;
+}
+
+body .container div#quiz ol li label {
+  font-size: 100%;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+body .container div#quiz ol li input[type="radio"] {
+  -webkit-transform: scale(3);
+          transform: scale(3);
+}
+
+body .container div#quizComplete {
+  display: none;
 }
 
 body .container button {
   font-family: "Gidugu", sans-serif;
-  min-width: 75px;
+  min-width: 150px;
   font-size: 100%;
 }
 /*# sourceMappingURL=styles.css.map */
