@@ -27,6 +27,8 @@ const startBtn = document.querySelector("#start");
 const quizEl = document.querySelector("#quiz");
 const quizButton = document.querySelector("#next");
 const quizCompleteEl = document.querySelector("#quizComplete");
+let latestRadioClick;
+
 startBtn.addEventListener("click", function () {
   startBtn.style.display = "none";
   quizEl.style.display = "block";
@@ -71,6 +73,9 @@ function presentQuestion() {
 }
 
 quizButton.addEventListener("click", function () {
+  correctTotal = checkAnswer(latestRadioClick)
+    ? correctTotal + 1
+    : correctTotal;
   currentQuestion++;
   this.disabled = true;
   presentQuestion();
@@ -79,7 +84,7 @@ quizButton.addEventListener("click", function () {
 quizEl.addEventListener("click", function (event) {
   const element = event.target;
   if (element.matches('input[type="radio"]')) {
-    correctTotal = checkAnswer(element) ? correctTotal + 1 : correctTotal;
+    latestRadioClick = element;
     quizButton.disabled = false;
   }
 });
