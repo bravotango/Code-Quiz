@@ -22,30 +22,83 @@ const questions = [
 ];
 
 let correctTotal = 0;
+let currentQuestion = 0;
 
-const startBtn = document.querySelector("#start");
-const quizEl = document.querySelector("#quiz");
-const quizButton = document.querySelector("#next");
-const quizCompleteEl = document.querySelector("#quizComplete");
+const startBtn = document.getElementById("start");
+const quizEl = document.getElementById("quiz");
+const quizButton = document.getElementById("next");
+const quizCompleteEl = document.getElementById("quizComplete");
+const timerEl = document.getElementById("clock");
+let timeInterval;
+let quizTime = 5.0;
+
+// latest radio button clicked
 let latestRadioClick;
+
+// timer
+let timer = quizTime;
+
+timerEl.style.fontSize = "100%";
+
+function stopWatch() {
+  timeInterval = setInterval(function () {
+    if (timer > 0) {
+      timer = timer - 0.1;
+      timer = timer < 0 ? 0 : timer;
+      timerEl.innerHTML = timer.toFixed(1);
+    } else {
+      timer = parseInt(timer);
+      gameOver();
+      clearInterval(timeInterval);
+    }
+  }, 100);
+}
+
+function gameOver() {
+  quizEl.style.display = "none";
+  quizCompleteEl.style.display = "block";
+  if (timer === 0) {
+    const timedOut = document.createElement("p");
+    timedOut.innerText = "Time expired.";
+    quizCompleteEl.appendChild(timedOut);
+  }
+  const score = document.createElement("div");
+
+  // display correct
+  const pCorrect = document.createElement("p");
+  pCorrect.innerText = `Correct: ${correctTotal}`;
+  score.appendChild(pCorrect);
+
+  // display # of question answered
+  const pAnswered = document.createElement("p");
+  pAnswered.innerText = `Answered: ${currentQuestion} / ${questions.length}`;
+  score.appendChild(pAnswered);
+
+  // display time left
+  const pTimeUsed = document.createElement("p");
+  const timeUsed = quizTime - timer;
+  pTimeUsed.innerText = `Time used: ${timeUsed.toFixed(1)} seconds`;
+  score.appendChild(pTimeUsed);
+
+  quizCompleteEl.appendChild(score);
+}
 
 startBtn.addEventListener("click", function () {
   startBtn.style.display = "none";
   quizEl.style.display = "block";
   presentQuestion();
+  stopWatch();
 });
 
 const h2Element = document.querySelector("h2");
 const olElement = document.querySelector("ol");
-let currentQuestion = 0;
 
 function presentQuestion() {
   if (currentQuestion >= questions.length) {
+    clearInterval(timeInterval);
     quizEl.style.display = "none";
     quizCompleteEl.style.display = "block";
-    const score = document.createElement("p");
-    score.innerHTML = correctTotal;
-    quizCompleteEl.appendChild(score);
+    gameOver();
     return;
   }
 
