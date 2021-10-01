@@ -3,25 +3,25 @@ const questions = [
     id: 1,
     question: "Are you a student?",
     choices: [
-      { answer: "Yes", value: "Y", correct: true },
-      { answer: "No", value: "N", correct: false },
-      { answer: "Maybe", value: "M", correct: false },
-      { answer: "I don't understand", value: "X", correct: false },
+      { id: 1, answer: "Yes", value: "Y", correct: true },
+      { id: 2, answer: "No", value: "N", correct: false },
+      { id: 3, answer: "Maybe", value: "M", correct: false },
+      { id: 4, answer: "I don't understand", value: "X", correct: false },
     ],
   },
   {
     id: 2,
     question: "Is JavaScript Java?",
     choices: [
-      { answer: "Yes", value: "Y", correct: false },
-      { answer: "No", value: "N", correct: true },
-      { answer: "Maybe", value: "M", correct: false },
-      { answer: "I don't understand", value: "X", correct: false },
+      { id: 1, answer: "Yes", value: "Y", correct: false },
+      { id: 2, answer: "No", value: "N", correct: true },
+      { id: 3, answer: "Maybe", value: "M", correct: false },
+      { id: 4, answer: "I don't understand", value: "X", correct: false },
     ],
   },
 ];
 
-const correctTotal = 0;
+let correctTotal = 0;
 
 const startBtn = document.querySelector("#start");
 const quizEl = document.querySelector("#quiz");
@@ -46,33 +46,51 @@ function presentQuestion() {
     quizCompleteEl.appendChild(score);
     return;
   }
+
   h2Element.innerHTML = questions[currentQuestion].question;
   olElement.innerHTML = "";
+
   for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
     let choice = document.createElement("li");
     let input = document.createElement("input");
     let label = document.createElement("label");
+
+    input.dataset.id = questions[currentQuestion].choices[i].id;
+    input.dataset.questionId = currentQuestion;
     input.type = "radio";
     input.value = questions[currentQuestion].choices[i].value;
     input.name = "question" + (currentQuestion + 1);
     input.id = "answer" + (i + 1);
     label.htmlFor = "answer" + (i + 1);
     label.innerHTML = questions[currentQuestion].choices[i].answer;
-    olElement.appendChild(choice);
 
+    olElement.appendChild(choice);
     choice.appendChild(input);
     choice.appendChild(label);
   }
 }
-quizEl.addEventListener("click", function () {
-  const radioChecked = document.querySelectorAll('input[type="radio"]:checked');
-  if (radioChecked.length > 0) {
-    quizButton.disabled = false;
-  }
-});
 
 quizButton.addEventListener("click", function () {
   currentQuestion++;
   this.disabled = true;
   presentQuestion();
 });
+
+quizEl.addEventListener("click", function (event) {
+  const element = event.target;
+  if (element.matches('input[type="radio"]')) {
+    correctTotal = checkAnswer(element) ? correctTotal + 1 : correctTotal;
+    quizButton.disabled = false;
+  }
+});
+
+function checkAnswer(el) {
+  const questionId = el.dataset.questionId;
+  const correctAnswer = questions[questionId].choices.find((choice) => {
+    if (choice.correct === true) {
+      return choice;
+    }
+  });
+
+  return el.dataset.id == correctAnswer.id ? true : false;
+}
