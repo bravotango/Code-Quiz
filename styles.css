@@ -9,19 +9,65 @@
 body {
   font-family: "Gidugu", sans-serif;
   font-size: 28px;
-  text-align: center;
 }
 
-body .container {
-  width: 400px;
+body button {
+  font-family: "Gidugu", sans-serif;
+  min-width: 150px;
+  font-size: 100%;
+}
+
+body #highScoresContainer {
+  width: 50%;
   margin: 0 auto;
-}
-
-body .container div#quiz {
   display: none;
 }
 
-body .container div#quiz ol {
+body #highScoresContainer ol li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body #highScoresContainer ol li p {
+  min-width: 50px;
+  text-align: center;
+}
+
+body #highScoresContainer ol li:nth-child(1) {
+  text-align: center;
+  text-decoration: underline;
+}
+
+body #backToQuizBtn {
+  display: none;
+}
+
+body #quizContainer {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body #quizContainer h2 {
+  line-height: 1;
+}
+
+body #quizContainer #clock {
+  font-size: 100%;
+}
+
+body #quizContainer div#quiz {
+  display: none;
+}
+
+body #quizContainer div#quiz ol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,7 +81,7 @@ body .container div#quiz ol {
   padding-bottom: 50px;
 }
 
-body .container div#quiz ol li {
+body #quizContainer div#quiz ol li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,28 +96,23 @@ body .container div#quiz ol li {
   line-height: 2;
 }
 
-body .container div#quiz ol li label {
+body #quizContainer div#quiz ol li label {
   font-size: 100%;
   padding-left: 30px;
   cursor: pointer;
 }
 
-body .container div#quiz ol li input[type="radio"] {
+body #quizContainer div#quiz ol li input[type="radio"] {
   -webkit-transform: scale(3);
           transform: scale(3);
 }
 
-body .container div#quizComplete {
+body #quizContainer div#quizComplete {
   display: none;
+  border: 1px solid red;
 }
 
-body .container button {
-  font-family: "Gidugu", sans-serif;
-  min-width: 150px;
-  font-size: 100%;
-}
-
-body .container div#buttonContainer {
+body #quizContainer div#buttonContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,7 +123,7 @@ body .container div#buttonContainer {
       justify-content: space-around;
 }
 
-body .container div#buttonContainer div#scoreBoard {
+body #quizContainer div#buttonContainer div#scoreBoard {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,24 +139,24 @@ body .container div#buttonContainer div#scoreBoard {
           align-items: flex-start;
 }
 
-body .container div#buttonContainer button#recordScore {
+body #quizContainer div#buttonContainer button#recordScore {
   display: none;
 }
 
-body .container form#recordScoreForm {
+body #quizContainer form#recordScoreForm {
   display: none;
 }
 
-body .container form#recordScoreForm input[type="text"] {
+body #quizContainer form#recordScoreForm input[type="text"] {
   padding: 10px;
 }
 
-body .container form#recordScoreForm button {
+body #quizContainer form#recordScoreForm button {
   font-size: 68%;
   min-width: 75px;
 }
 
-body .container div#highScores {
+body #quizContainer div#highScores {
   display: none;
 }
 /*# sourceMappingURL=styles.css.map */
