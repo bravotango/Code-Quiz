@@ -70,4 +70,52 @@ body .container button {
   min-width: 150px;
   font-size: 100%;
 }
+
+body .container div#buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .container div#buttonContainer div#scoreBoard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+body .container div#buttonContainer button#recordScore {
+  display: none;
+}
+
+body .container form#recordScoreForm {
+  display: none;
+}
+
+body .container form#recordScoreForm input[type="text"] {
+  padding: 10px;
+}
+
+body .container form#recordScoreForm button {
+  font-size: 68%;
+  min-width: 75px;
+}
+
+body .container div#highScores {
+  display: none;
+}
 /*# sourceMappingURL=styles.css.map */

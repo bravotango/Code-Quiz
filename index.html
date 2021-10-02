@@ -16,8 +16,24 @@
         <ol></ol>
         <button id="next" disabled>Next Question</button>
       </div>
-      <button id="start">Start Quiz</button>
+
       <div id="quizComplete">Quiz Complete</div>
+      <div id="scoreBoard"></div>
+      <div id="buttonContainer">
+        <button id="recordScore">Record Score</button>
+        <button id="start">Start Quiz</button>
+      </div>
+      <form id="recordScoreForm" onsubmit="recordScore(event)">
+        <input
+          type="text"
+          name="initials"
+          id="initials"
+          placeholder="Enter your initials"
+          required
+        />
+        <button type="submit">Record</button>
+      </form>
+      <div id="highScores"></div>
     </div>
   </body>
   <script src="scripts.js"></script>
