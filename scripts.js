@@ -304,9 +304,11 @@ function writeTimer() {
 function getHighScores() {
   let highScores = JSON.parse(localStorage.getItem("highScores"));
   // sort highScores by score
-  highScores = highScores.sort(function (a, b) {
-    return b.score - a.score;
-  });
+  if (highScores) {
+    highScores = highScores.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  }
   return highScores;
 }
 highScoresBtn.addEventListener("click", showHighScores);
