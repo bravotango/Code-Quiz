@@ -315,13 +315,15 @@ highScoresBtn.addEventListener("click", showHighScores);
 
 function showHighScores() {
   const highScores = getHighScores();
+  backToQuizBtn.style.display = "block";
+  quizContainer.style.display = "none";
+  highScoresBtn.style.display = "none";
+  highScoresContainer.style.display = "block";
   if (!highScores) {
     highScoresList.innerHTML = "<li>No high scores have been recorded</li>";
     return;
   }
-  backToQuizBtn.style.display = "block";
-  quizContainer.style.display = "none";
-  highScoresBtn.style.display = "none";
+
   const numberOfScoresToDisplay =
     highScores.length < 10 ? highScores.length : 10;
   highScoresList.innerHTML = "<li><p>Rank</p><p>Score</p><p>Name</p></li>";
@@ -330,7 +332,6 @@ function showHighScores() {
     console.log(gameHTML);
     highScoresList.appendChild(gameHTML);
   }
-  highScoresContainer.style.display = "block";
 }
 
 function getScoreHTML(game, rank) {
