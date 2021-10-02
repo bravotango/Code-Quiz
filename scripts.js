@@ -315,6 +315,10 @@ highScoresBtn.addEventListener("click", showHighScores);
 
 function showHighScores() {
   const highScores = getHighScores();
+  if (!highScores) {
+    highScoresList.innerHTML = "<li>No high scores have been recorded</li>";
+    return;
+  }
   backToQuizBtn.style.display = "block";
   quizContainer.style.display = "none";
   highScoresBtn.style.display = "none";
