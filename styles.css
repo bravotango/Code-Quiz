@@ -118,23 +118,21 @@ body #quizContainer div#quiz ol li {
   width: 100%;
   margin: 0;
   line-height: 2;
-  min-width: 400px;
+  min-width: 280px;
 }
 
 body #quizContainer div#quiz ol li label {
   font-size: 100%;
   padding-left: 30px;
+  text-align: left;
+  line-height: 0.75;
   cursor: pointer;
 }
 
 body #quizContainer div#quiz ol li input[type="radio"] {
-  -webkit-transform: scale(3);
-          transform: scale(3);
-}
-
-body #quizContainer div#quizComplete {
-  display: none;
-  border: 1px solid red;
+  margin: 20px;
+  -webkit-transform: scale(2);
+          transform: scale(2);
 }
 
 body #quizContainer div#scoreBoard {

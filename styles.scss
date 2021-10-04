@@ -84,22 +84,21 @@ body {
           width: 100%;
           margin: 0;
           line-height: 2;
-          min-width: 400px;
+          min-width: 280px;
 
           label {
             font-size: 100%;
             padding-left: 30px;
+            text-align: left;
+            line-height: 0.75;
             cursor: pointer;
           }
           input[type="radio"] {
-            transform: scale(3);
+            margin: 20px;
+            transform: scale(2);
           }
         }
       }
-    }
-    div#quizComplete {
-      display: none;
-      border: 1px solid red;
     }
 
     div#scoreBoard {
