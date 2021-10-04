@@ -2,22 +2,23 @@
 const questions = [
   {
     id: 1,
-    question: "How do you declare a variable that will be hoisted?",
+    question: "What is not a JavaScript data type?",
     choices: [
-      { id: 1, answer: "const", correct: false },
-      { id: 2, answer: "var", correct: true },
-      { id: 3, answer: "let", correct: false },
-      { id: 4, answer: "function", correct: false },
+      { id: 1, answer: "string", value: "s", correct: false },
+      { id: 2, answer: "var", value: "v", correct: true },
+      { id: 3, answer: "object", value: "o", correct: false },
+      { id: 4, answer: "undefined", value: "u", correct: false },
     ],
   },
   {
     id: 2,
-    question: "How do you declare a function that will be hoisted?",
+    question:
+      "What key word is not a valid way to declare a JavaScript variable?",
     choices: [
-      { id: 1, answer: "const", correct: false },
-      { id: 2, answer: "var", correct: false },
-      { id: 3, answer: "let", correct: false },
-      { id: 4, answer: "function", value: "f", correct: true },
+      { id: 1, answer: "const", value: "c", correct: false },
+      { id: 2, answer: "var", value: "v", correct: false },
+      { id: 3, answer: "let", value: "l", correct: false },
+      { id: 4, answer: "func", value: "f", correct: true },
     ],
   },
   {
@@ -29,11 +30,34 @@ const questions = [
       {
         id: 3,
         answer: "Yes. Before 2000 they were cousins",
+        value: "x",
         correct: false,
       },
       {
         id: 4,
         answer: "No. After 2000 they separated",
+        value: "x",
+        correct: false,
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    question: "JavaScript document cookies are all of the following, except?",
+    choices: [
+      { id: 1, answer: "Tasty edibles", value: "e", correct: true },
+      { id: 2, answer: "Cookies are data", value: "d", correct: false },
+      {
+        id: 3,
+        answer: "Cookies are stored in small text files",
+        value: "x",
+        correct: false,
+      },
+      {
+        id: 4,
+        answer: "Cookies are stored on your computer",
+        value: "x",
         correct: false,
       },
     ],
@@ -56,6 +80,7 @@ const backToQuizBtn = document.getElementById("backToQuizBtn");
 const highScoresContainer = document.getElementById("highScoresContainer");
 const quizContainer = document.getElementById("quizContainer");
 const highScoresList = document.querySelector("#highScoresContainer ol");
+const cancelRecordScoreBtn = document.getElementById("cancelRecordScoreBtn");
 
 // current state variables
 let correctTotal;
@@ -65,7 +90,8 @@ let quizTime;
 let timePenalties;
 let latestRadioClick;
 let penaltyTime;
-let timer = quizTime;
+let timer;
+let score;
 
 // initialize Quiz
 function initializeQuiz() {
@@ -86,6 +112,56 @@ function initializeScoreBoard() {
   recordScoreBtn.style.display = "none";
   recordScoreForm.style.display = "none";
 }
+
+// Event listeners
+// record score button
+recordScoreBtn.addEventListener("click", displayRecordScoreForm);
+
+cancelRecordScoreBtn.addEventListener("click", closeRecordScoreForm);
+
+// is view high scores button clicked?
+highScoresBtn.addEventListener("click", showHighScores);
+
+// is back to quiz button clicked?
+backToQuizBtn.addEventListener("click", backToQuiz);
+
+// is a radio answer button clicked?
+quizEl.addEventListener("click", function (event) {
+  const element = event.target;
+  // check if click matches a input type radio button
+  if (element.matches("input[type='radio']")) {
+    latestRadioClick = element;
+    quizNextQuestionBtn.disabled = false;
+  }
+});
+
+// is the start/restart quiz button clicked?
+startBtn.addEventListener("click", function () {
+  initializeQuiz();
+  initializeScoreBoard();
+  startBtn.style.display = "none";
+  quizEl.style.display = "block";
+  presentQuestion();
+  stopWatch();
+});
+
+// next question button clicked?
+quizNextQuestionBtn.addEventListener("click", function () {
+  if (checkAnswer(latestRadioClick) === true) {
+    correctTotal++;
+  } else {
+    // time penalty
+    timer = timer - penaltyTime > 0 ? timer - penaltyTime : 0;
+    if (timer === 0) {
+      writeTimer();
+    }
+    timePenalties++;
+  }
+  // proceed to the next question
+  currentQuestion++;
+  this.disabled = true;
+  presentQuestion();
+});
 
 // timer
 function stopWatch() {
@@ -130,14 +206,22 @@ function gameOver() {
   } seconds`;
   scoreBoard.appendChild(pTimePenalties);
 
+  // display calculated score
+  const pScore = document.createElement("p");
+  score = correctTotal + timer * correctTotal - timePenalties;
+  pScore.innerHTML = `<strong>${score.toFixed(1)}</strong>`;
+  pScore.setAttribute("title", `${score}`);
+  pScore.setAttribute("id", "quizScore");
+  scoreBoard.appendChild(pScore);
+
+  const pScoreDefinition = document.createElement("p");
+  pScoreDefinition.setAttribute("class", "small");
+  pScoreDefinition.innerHTML = `Score calculated by: correct + (time left * correct) - penalties`;
+  scoreBoard.appendChild(pScoreDefinition);
+
   recordScoreBtn.style.display = "block";
   startBtn.style.display = "block";
 }
-
-// record score button
-recordScoreBtn.addEventListener("click", function () {
-  displayRecordScoreForm();
-});
 
 // display the record score form
 function displayRecordScoreForm() {
@@ -146,15 +230,21 @@ function displayRecordScoreForm() {
   startBtn.style.display = "none";
 }
 
+// hide the record score form
+function closeRecordScoreForm() {
+  recordScoreForm.style.display = "none";
+  recordScoreBtn.style.display = "block";
+  startBtn.style.display = "block";
+}
+
 // record score to local storage
 function recordScore(event) {
   event.preventDefault();
   const initials = document.querySelector('input[name="initials"]').value;
-  const quizScore = correctTotal + timer - timePenalties;
 
   // gather score to save
-  const score = {
-    score: quizScore,
+  const scoreObj = {
+    score: score,
     correct: correctTotal,
     name: initials,
     date: Date.now(),
@@ -174,7 +264,7 @@ function recordScore(event) {
   }
 
   // add current quiz to highScores array
-  highScores.push(score);
+  highScores.push(scoreObj);
 
   // add new quiz score to local storage
   window.localStorage.setItem("highScores", JSON.stringify(highScores));
@@ -232,7 +322,7 @@ function listChoices() {
     radio.dataset.id = questions[currentQuestion].choices[i].id;
     radio.dataset.questionId = currentQuestion;
     radio.type = "radio";
-    radio.value = questions[currentQuestion].choices[i].value;
+    //radio.value = questions[currentQuestion].choices[i].value;
     radio.name = "question" + (currentQuestion + 1);
     radio.id = "answer" + (i + 1);
 
@@ -257,45 +347,6 @@ function checkAnswer(el) {
   return el.dataset.id == correctAnswer.id ? true : false;
 }
 
-// Event listeners
-// is a radio answer button clicked?
-quizEl.addEventListener("click", function (event) {
-  const element = event.target;
-  // check if click matches a input type radio button
-  if (element.matches("input[type='radio']")) {
-    latestRadioClick = element;
-    quizNextQuestionBtn.disabled = false;
-  }
-});
-
-// is the start/restart quiz button clicked?
-startBtn.addEventListener("click", function () {
-  initializeQuiz();
-  initializeScoreBoard();
-  startBtn.style.display = "none";
-  quizEl.style.display = "block";
-  presentQuestion();
-  stopWatch();
-});
-
-// next question button clicked?
-quizNextQuestionBtn.addEventListener("click", function () {
-  if (checkAnswer(latestRadioClick) === true) {
-    correctTotal++;
-  } else {
-    // time penalty
-    timer = timer - penaltyTime > 0 ? timer - penaltyTime : 0;
-    if (timer === 0) {
-      writeTimer();
-    }
-    timePenalties++;
-  }
-  // proceed to the next question
-  currentQuestion++;
-  this.disabled = true;
-  presentQuestion();
-});
-
 // simple writeTimer function since called in multiple places
 function writeTimer() {
   timerEl.textContent = `Time left: ${timer.toFixed(1)}`;
@@ -306,12 +357,12 @@ function getHighScores() {
   // sort highScores by score
   if (highScores) {
     highScores = highScores.sort(function (a, b) {
+      // sort descending
       return b.score - a.score;
     });
   }
   return highScores;
 }
-highScoresBtn.addEventListener("click", showHighScores);
 
 function showHighScores() {
   const highScores = getHighScores();
@@ -342,7 +393,6 @@ function getScoreHTML(game, rank) {
   return gameHTML;
 }
 
-backToQuizBtn.addEventListener("click", backToQuiz);
 function backToQuiz() {
   quizContainer.style.display = "block";
   highScoresContainer.style.display = "none";

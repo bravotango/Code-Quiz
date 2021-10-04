@@ -33,9 +33,25 @@ body {
       }
     }
     ol li:nth-child(1) {
-      // transform: scale(120%);
       text-align: center;
-      text-decoration: underline;
+    }
+    li:nth-child(even) {
+      background-color: rgb(245, 245, 245);
+    }
+    li:nth-child(5n + 2) {
+      color: rgb(55, 76, 172);
+    }
+    li:nth-child(5n + 3) {
+      color: rgb(119, 18, 114);
+    }
+    li:nth-child(5n + 4) {
+      color: rgb(12, 131, 131);
+    }
+    li:nth-child(5n + 5) {
+      color: rgb(199, 141, 34);
+    }
+    li:nth-child(5n + 6) {
+      color: rgb(156, 7, 7);
     }
   }
   #backToQuizBtn {
@@ -43,6 +59,7 @@ body {
   }
   #quizContainer {
     width: 50%;
+    max-width: 500px;
     margin: 0 auto;
     text-align: center;
     h2 {
@@ -67,6 +84,7 @@ body {
           width: 100%;
           margin: 0;
           line-height: 2;
+          min-width: 400px;
 
           label {
             font-size: 100%;
@@ -84,16 +102,38 @@ body {
       border: 1px solid red;
     }
 
+    div#scoreBoard {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+      p#quizScore {
+        padding: 10px;
+        border: 8px dotted yellow;
+        margin: 1.75em;
+
+        box-shadow: 0 0 0 15px #000, 0 0 0 25px yellow, 0 0 0 26px black;
+
+        background-color: black;
+        color: yellow;
+        width: 100%;
+        strong {
+          min-width: 50px;
+          font-size: 300%;
+        }
+      }
+      .small {
+        line-height: 0.65;
+        font-size: 80%;
+      }
+    }
+
     div#buttonContainer {
       display: flex;
       align-items: center;
       justify-content: space-around;
-      div#scoreBoard {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-      }
+
       button#recordScore {
         display: none;
       }
