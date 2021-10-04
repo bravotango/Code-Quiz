@@ -89,6 +89,7 @@ let latestRadioClick;
 let penaltyTime;
 let timer;
 let score;
+const highScoreDisplayLimit = 10;
 
 // initialize Quiz
 function initializeQuiz() {
@@ -183,7 +184,9 @@ function highScoresBtnClickHandler() {
   }
 
   const numberOfScoresToDisplay =
-    highScores.length < 10 ? highScores.length : 10;
+    highScores.length < highScoreDisplayLimit
+      ? highScores.length
+      : highScoreDisplayLimit;
   highScoresListOlEl.innerHTML = "<li><p>Rank</p><p>Score</p><p>Name</p></li>";
   for (let i = 0; i < numberOfScoresToDisplay; i++) {
     let gameHTML = getScoreHTML(highScores[i], i + 1);
@@ -237,6 +240,7 @@ function writeTimer() {
   timerEl.textContent = `Time left: ${timer.toFixed(1)}`;
 }
 
+// present current question
 function presentQuestion() {
   if (isMoreQuestions() === false) {
     // no more questions or time's up, isQuestionsDone() says we are done - let's jump out
@@ -310,6 +314,7 @@ function isMoreQuestions() {
   return true;
 }
 
+// get score and return the html to display the score
 function getScoreHTML(game, rank) {
   let gameHTML = document.createElement("li");
   gameHTML.innerHTML = `<p>${rank}</p><p>${game.score.toFixed(1)}</p><p>${
