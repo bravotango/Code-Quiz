@@ -148,7 +148,7 @@ function startBtnClickHandler() {
 
 // next question button clicked
 function quizNextQuestionBtnClickHandler() {
-  if (checkAnswer(latestRadioClick) === true) {
+  if (checkAnswer(latestRadioClick)) {
     correctTotal++;
   } else {
     // time penalty
@@ -242,7 +242,7 @@ function writeTimer() {
 
 // present current question
 function presentQuestion() {
-  if (isMoreQuestions() === false) {
+  if (!isMoreQuestions()) {
     // no more questions or time's up, isQuestionsDone() says we are done - let's jump out
     return;
   }
@@ -286,11 +286,11 @@ function listChoices() {
 function checkAnswer(el) {
   const questionId = el.dataset.questionId;
   const correctAnswer = questions[questionId].choices.find((choice) => {
-    if (choice.value === true) {
+    if (choice.value) {
       return true;
     }
   });
-  return el.dataset.id == correctAnswer.id ? true : false;
+  return el.dataset.id == correctAnswer.id;
 }
 
 // returns boolean if no more question, stops timer & calls gameOver if false

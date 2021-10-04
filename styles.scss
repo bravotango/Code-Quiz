@@ -9,17 +9,18 @@
 body {
   font-family: "Gidugu", sans-serif;
   font-size: 28px;
-
+  line-height: 1;
   button {
     font-family: "Gidugu", sans-serif;
     min-width: 150px;
     font-size: 100%;
+    margin: 20px;
   }
   #highScoresContainer {
     width: 50%;
     margin: 0 auto;
     display: none;
-
+    line-height: 1.75;
     ol {
       li {
         display: flex;
@@ -63,7 +64,8 @@ body {
     margin: 0 auto;
     text-align: center;
     h2 {
-      line-height: 1;
+      margin: 50px 0;
+      line-height: 0.75;
     }
     #clock {
       font-size: 100%;
@@ -83,7 +85,6 @@ body {
           justify-content: flex-start;
           width: 100%;
           margin: 0;
-          line-height: 2;
           min-width: 280px;
 
           label {
@@ -106,14 +107,13 @@ body {
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      margin-bottom: 20px;
+      margin: 20px 0;
       p#quizScore {
         padding: 10px;
         border: 8px dotted yellow;
         margin: 1.75em;
 
         box-shadow: 0 0 0 15px #000, 0 0 0 25px yellow, 0 0 0 26px black;
-
         background-color: black;
         color: yellow;
         width: 100%;
@@ -139,16 +139,28 @@ body {
     }
     form#recordScoreForm {
       display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
       input[type="text"] {
         padding: 10px;
+        width: 126px;
       }
       button {
         font-size: 68%;
-        min-width: 75px;
+        min-width: 65px;
+        margin: 0 0 0 10px;
       }
     }
-    div#highScores {
-      display: none;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  body #quizContainer form#recordScoreForm {
+    input[type="text"] {
+      width: 200px;
+      margin-bottom: 10px;
     }
   }
 }
