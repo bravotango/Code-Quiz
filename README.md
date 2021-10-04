@@ -4,7 +4,7 @@ This application is a short code quiz on JavaScript.
 
 When the application loads, there are 2 buttons to choose from, 'Start Quiz' & 'View High Scores'.
 
-When the user clicks the 'Start Quiz' button, questions and list of choices are presented to the user.
+When the user clicks the 'Start Quiz' button, a question and list of choices are presented to the user.
 
 By default, the 'Next Question' button is disabled. When a choice for a question is selected, the 'Next Question' button is enabled.
 
@@ -41,32 +41,32 @@ THEN I can save my initials and my score
 
 ### Quiz Initial Screen
 
-Simple screen with buttons to start quiz or view high scores.
+Simple screen with buttons to start quiz or view high scores.<br />
 ![quiz start](./images/quiz-init.png)
 
 ### Quiz Started
 
-Timer starts and questions are presented. Next question button is disabled until an answer has been selected.
+Timer starts and questions are presented. Next question button is disabled until an answer has been selected.<br />
 ![quiz question with timer](./images/quiz-question.png)
 
 ### Quiz Question Answered
 
-Next button is enabled after answer has been selected.
+Next button is enabled after answer has been selected.<br />
 ![quiz next button enabled](./images/quiz-question-answered.png)
 
 ### Quiz Complete
 
-When quiz is complete, score is presented with explanation on how scoring is tallied. Buttons to record score & restart quiz are presented.
+When quiz is complete, score is presented with explanation on how scoring is tallied. Buttons to record score & restart quiz are presented.<br />
 ![quiz complete](./images/quiz-complete.png)
 
 ### Quiz Record Score Form
 
-Record score from has 1 input for adding 1-3 initials. Adding initials and clicking record adds the score to the local storage key 'highScores'.
+Record score from has 1 input for adding 1-3 initials. Adding initials and clicking record adds the score to the local storage key 'highScores'.<br />
 ![quiz record score form](./images/quiz-record.png)
 
 ### Quiz High Scores
 
-High scores are sorted in descending order. The variable 'highScoreDisplayLimit' is set to 10 allowing up to 10 high scores to be displayed.
+High scores are sorted in descending order. The variable 'highScoreDisplayLimit' is set to 10 allowing up to 10 high scores to be displayed.<br />
 ![quiz high scores](./images/quiz-high-scores.png)
 
 ## Application Location
