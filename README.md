@@ -1,6 +1,20 @@
 # Code Quiz
 
-This application presents questions and list of choices to the user when the user clicks the 'Start Quiz' button. When a choice for a question is selected, the next question button is enabled. When time runs out or all questions have been answered. The user is presented with there score. This quiz scoring is defined as: correct + (time left \* correct) - wrong. When the quiz is completed the user has the option to record their score, by clicking the 'Record Score' button then entering their initials. There is 'View High Scores' button, that the user can click to view the top 10 scores.
+This application is a short code quiz on JavaScript.
+
+When the application loads, there are 2 buttons to choose from, 'Start Quiz' & 'View High Scores'.
+
+When the user clicks the 'Start Quiz' button, questions and list of choices are presented to the user.
+
+By default, the 'Next Question' button is disabled. When a choice for a question is selected, the 'Next Question' button is enabled.
+
+When time runs out or all questions have been answered, the user is presented with their score.
+
+This quiz scoring is defined as: correct + (time left \* correct) - wrong.
+
+When the quiz is completed the user has the option to record their score, by clicking the 'Record Score' button then entering their initials.
+
+Clicking the 'View High Scores' button will display up to the number stored in the variable 'highScoreDisplayLimit'. The application has 'highScoreDisplayLimit' set to 10.
 
 ## Satisfied Acceptance Criteria
 
