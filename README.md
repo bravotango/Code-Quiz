@@ -51,7 +51,7 @@ Timer starts and questions are presented. The 'Next Question' button is disabled
 
 ### Quiz Question Answered
 
-The 'Next Button' is enabled after an answer has been selected.<br />
+The 'Next Question' button is enabled after an answer has been selected. If the 'Next Question' button is clicked and the selected answer is incorrect, time is subtracted from the timer. This application has a variable 'penaltyTime' set to 5.0 (seconds) used to subtract for each wrong answer.<br />
 ![quiz next button enabled](./images/quiz-question-answered.png)
 
 ### Quiz Complete

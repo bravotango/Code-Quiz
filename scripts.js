@@ -26,35 +26,28 @@ const questions = [
     choices: [
       { id: 1, answer: "Yes", value: false },
       { id: 2, answer: "No", value: true },
-      {
-        id: 3,
-        answer: "Yes. Before 2000 they were cousins",
-        value: false,
-      },
-      {
-        id: 4,
-        answer: "No. After 2000 they separated",
-        value: false,
-      },
+      { id: 3, answer: "Yes. Before 2000 they were cousins", value: false },
+      { id: 4, answer: "No. After 2000 they separated", value: false },
     ],
   },
   {
     id: 4,
-    question: "JavaScript document cookies are all of the following, except?",
+    question: "Which of the following is not a JavaScript arithmetic operator?",
     choices: [
-      { id: 1, answer: "Tasty edibles", value: true },
-      { id: 2, answer: "Cookies are data", value: false },
-      {
-        id: 3,
-        answer: "Cookies are stored in small text files",
-        value: false,
-      },
-      {
-        id: 4,
-        answer: "Cookies are stored on your computer",
-
-        value: false,
-      },
+      { id: 1, answer: "+", value: false },
+      { id: 2, answer: "*", value: false },
+      { id: 3, answer: "%", value: false },
+      { id: 4, answer: "?", value: true },
+    ],
+  },
+  {
+    id: 5,
+    question: "To add a value to the end of an array, use the array method:",
+    choices: [
+      { id: 1, answer: "pop()", value: false },
+      { id: 2, answer: "shift()", value: false },
+      { id: 3, answer: "push()", value: true },
+      { id: 4, answer: "unshift()", value: false },
     ],
   },
 ];
