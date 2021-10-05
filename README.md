@@ -39,32 +39,32 @@ THEN I can save my initials and my score
 
 ## Screenshots
 
-### Quiz Initial Screen
+### Code Quiz Initial Screen
 
 Simple screen with buttons to 'Start Quiz' or 'View High Scores'.<br />
 ![quiz start](./images/quiz-init.png)
 
-### Quiz Started
+### Code Quiz Started
 
 Timer starts and questions are presented. The 'Next Question' button is disabled until an answer has been selected.<br />
 ![quiz question with timer](./images/quiz-question.png)
 
-### Quiz Question Answered
+### Code Quiz Question Answered
 
 The 'Next Question' button is enabled after an answer has been selected. If the 'Next Question' button is clicked and the selected answer is incorrect, time is subtracted from the timer. This application has a variable 'penaltyTime' set to 5.0 (seconds) used to subtract for each wrong answer.<br />
 ![quiz next button enabled](./images/quiz-question-answered.png)
 
-### Quiz Complete
+### Code Quiz Complete
 
 When quiz is complete, the score is presented with explanation on how scoring is tallied. Buttons to 'Record Score' & 'Restart Quiz?' are presented.<br />
 ![quiz complete](./images/quiz-complete.png)
 
-### Quiz Record Score Form
+### Code Quiz Record Score Form
 
 The record score form has 1 input for adding 1-3 initials. Adding initials and clicking the 'Record' button adds the score to the local storage value array for the key 'highScores'.<br />
 ![quiz record score form](./images/quiz-record.png)
 
-### Quiz High Scores
+### Code Quiz High Scores
 
 High scores are sorted in descending order. The variable 'highScoreDisplayLimit' is set to 10 allowing up to 10 high scores to be displayed.<br />
 ![quiz high scores](./images/quiz-high-scores.png)
