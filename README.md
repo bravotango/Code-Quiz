@@ -41,27 +41,27 @@ THEN I can save my initials and my score
 
 ### Quiz Initial Screen
 
-Simple screen with buttons to start quiz or view high scores.<br />
+Simple screen with buttons to 'Start Quiz' or 'View High Scores'.<br />
 ![quiz start](./images/quiz-init.png)
 
 ### Quiz Started
 
-Timer starts and questions are presented. Next question button is disabled until an answer has been selected.<br />
+Timer starts and questions are presented. The 'Next Question' button is disabled until an answer has been selected.<br />
 ![quiz question with timer](./images/quiz-question.png)
 
 ### Quiz Question Answered
 
-Next button is enabled after answer has been selected.<br />
+The 'Next Button' is enabled after an answer has been selected.<br />
 ![quiz next button enabled](./images/quiz-question-answered.png)
 
 ### Quiz Complete
 
-When quiz is complete, score is presented with explanation on how scoring is tallied. Buttons to record score & restart quiz are presented.<br />
+When quiz is complete, the score is presented with explanation on how scoring is tallied. Buttons to 'Record Score' & 'Restart Quiz?' are presented.<br />
 ![quiz complete](./images/quiz-complete.png)
 
 ### Quiz Record Score Form
 
-Record score from has 1 input for adding 1-3 initials. Adding initials and clicking record adds the score to the local storage key 'highScores'.<br />
+The record score form has 1 input for adding 1-3 initials. Adding initials and clicking the 'Record' button adds the score to the local storage value array for the key 'highScores'.<br />
 ![quiz record score form](./images/quiz-record.png)
 
 ### Quiz High Scores
