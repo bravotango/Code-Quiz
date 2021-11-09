@@ -71,4 +71,4 @@ High scores are sorted in descending order. The variable 'highScoreDisplayLimit'
 
 ## Application Location
 
-[https://bravotango.github.io/code-quiz/](https://bravotango.github.io/code-quiz/)
+[https://bravotango.github.io/Code-Quiz/](https://bravotango.github.io/Code-Quiz/)
